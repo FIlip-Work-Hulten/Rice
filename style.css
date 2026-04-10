@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #54744e;
+    color: #46c015;
+    padding: 20px;
+    text-align: center;
+}
+h1 {
+    margin: 0;
+    color: #46c015;
+}
+p {
+    margin: 20px;
+    color: #19897c;
+}
+button {
+    background-color: #19897c;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #46c015;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    width: 400px;
+    background-color: #c4d139;
+    margin: 20px auto;
+}
+/* .vertical-center removed — centering handled by .container flexbox */
