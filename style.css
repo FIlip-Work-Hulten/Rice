@@ -1,12 +1,12 @@
 button {
-    background-color: #19897c;
+    background-color: #79d4c9;
     color: #000000;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
 }
 button:hover {
-    background-color: #46c015;
+    background-color: #8ddc6e;
 }
 .container {
     display: flex;
@@ -14,7 +14,7 @@ button:hover {
     justify-content: center;
     height: 400px;
     width: 400px;
-    background-color: #c4d139;
+    background-color: #dce19d;
     margin: 20px auto;
 }
 /* .vertical-center removed — centering handled by .container flexbox */
