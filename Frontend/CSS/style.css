@@ -13,7 +13,9 @@ html{
 
 body{
     align-items: center;
-    background: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4);
+    background: #000428; 
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  
+    background: linear-gradient(to right, #004e92, #000428); 
     display: flex;
     font-family: 'Dosis', sans-serif;
     font-display: swap;
@@ -63,6 +65,7 @@ body{
     flex-basis: 400px;
     height: 540px;
     padding: 20px 35px;
+    margin: 20px;
 }
 
 .button-row {
@@ -132,17 +135,6 @@ body{
 .navbar-button:active {
     background-color: #ffef78;
 }
-.body.cv {
-    align-items: center;
-    background: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4);
-    display: flex;
-    font-family: 'Dosis', sans-serif;
-    font-display: swap;
-    height: inherit;
-    justify-content: center;
-    overflow: hidden;
-    margin: 0;
-}
 .wrapper.cv {
    backdrop-filter: blur(5.5px);
     -webkit-backdrop-filter: blur(5.5px);
@@ -175,6 +167,24 @@ body{
     width: 100%;
     margin: 10px;
 }
+.screen.cv:hover {
+        background-color: inherit;
+}
+.screen.cv::-webkit-scrollbar {
+    width: 8px;
+}
+.screen.cv::-webkit-scrollbar-track {
+    background: transparent;
+}
+.screen.cv::-webkit-scrollbar-thumb {    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
+}
+.screen.cv::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
 .p {
     margin-bottom: 10px;
 }
@@ -232,6 +242,12 @@ a {
     text-align: left;
     width: 100%;
     margin: 10px;
+}
+.button.projects:hover {
+    background-color: inherit;
+}
+.button.projects:active {
+    background-color: #ffef78;
 }
 .repo-card {
     position: relative;
