@@ -11,6 +11,16 @@ html{
     padding: 0;
 }
 
+body{
+    align-items: center;
+    background: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4);
+    display: flex;
+    font-family: 'Dosis', sans-serif;
+    font-display: swap;
+    height: inherit;
+    justify-content: center;
+}
+
 
 .button {
    backdrop-filter: blur(5.5px);
@@ -32,8 +42,11 @@ html{
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(35, 35, 35, 0.1);
     color: #232323;
-    font-size: 24px;
-    height: 65px;
+    font-size: 35px;
+    overflow: auto;
+    padding: 20px;
+    text-align: right;
+    width: 326px;
 }
 .wrapper {
     backdrop-filter: blur(5.5px);
@@ -51,16 +64,7 @@ html{
     height: 540px;
     padding: 20px 35px;
 }
-.body {
-    align-items: center;
-    background: linear-gradient(320deg, #eb92be, #ffef78, #63c9b4);
-    display: flex;
-    font-family: 'Dosis', sans-serif;
-    font-display: swap;
-    height: inherit;
-    justify-content: center;
 
-}
 .button-row {
     display: flex;
     justify-content: space-between;
@@ -89,4 +93,7 @@ html{
 }
 .double {
     flex-basis: 47%;
+}
+.triple {
+    flex-basis: 73%;
 }
