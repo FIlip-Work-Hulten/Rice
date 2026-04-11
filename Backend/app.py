@@ -4,7 +4,8 @@ from flask import Flask, send_from_directory, abort, redirect
 BASE_DIR = Path(__file__).resolve().parent.parent
 FRONTEND_DIR = BASE_DIR / "Frontend"
 HTML_DIR = FRONTEND_DIR / "HTML"
-PROJECTS_DIR = BASE_DIR / "Projects"
+# Projects live under Frontend/Projects in this repo layout.
+PROJECTS_DIR = FRONTEND_DIR / "Projects"
 
 app = Flask(__name__, static_folder=str(FRONTEND_DIR), static_url_path="/static")
 
@@ -64,10 +65,28 @@ def project_slug(slug):
 @app.route("/<path:path>")
 def catch_all(path):
 	if path.endswith('.html'):
-		stem = Path(path).stem
-		if stem.lower() == 'index':
-			return redirect('/', code=302)
-		return redirect(f'/{stem}', code=302)
+		fn = Path(path).name
+		# If the HTML file exists under Frontend/HTML, map to clean /<page>
+		if (HTML_DIR / fn).exists():
+			stem = Path(fn).stem
+			if stem.lower() == 'index':
+				return redirect('/', code=302)
+			return redirect(f'/{stem.lower()}', code=302)
+
+		# If the HTML file exists under Frontend/Projects, map to /projects/<slug>
+		if (PROJECTS_DIR / fn).exists():
+			stem = Path(fn).stem
+			return redirect(f'/projects/{stem.lower()}', code=302)
+
+		# If the file exists under Frontend with a subpath (e.g. Frontend/Projects/...)
+		p = FRONTEND_DIR / path
+		if p.exists():
+			rel = p.relative_to(FRONTEND_DIR)
+			return send_from_directory(str(FRONTEND_DIR), str(rel))
+
+		# Fall through to asset handlers / clean URL matching below.
+
+		# If not found under Frontend, fall through to the normal handlers.
 
 	if "." in path:
 		asset_candidates = [FRONTEND_DIR / path,
