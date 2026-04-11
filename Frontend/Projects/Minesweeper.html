@@ -8,13 +8,13 @@
         <link rel="icon" type="image/png" href="../img/Icon.png">
     </head>
     <body class="body">
-        <div class="navbar">
-            <section>
-                <button class="navbar-button" onclick="window.location.href='../HTML/projects.html'">
-                    Return
-                </button>
-            </section>
-        </div>
+                <div id="navbar-root"></div>
+                <script src="../JS/routing.js"></script>
+                <script src="../JS/i18n.js"></script>
+                <script src="../JS/navbar.js"></script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function(){ if(typeof i18nInit==='function') i18nInit(); });
+                </script>
 
     </body>
 </html>

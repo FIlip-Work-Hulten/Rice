@@ -311,3 +311,32 @@ a {
     font-size: 13px;
     opacity: 0.7;
 }
+.language-switcher {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(35, 35,35, 0.1);
+    color: #232323;
+    font-size: 14px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.language-switcher:hover {
+    background-color: inherit;
+}
+.language-switcher:active {
+    background-color: #ffef78;
+}
+.language.icon {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 8px;
+}

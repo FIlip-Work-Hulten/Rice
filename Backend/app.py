@@ -9,6 +9,8 @@ PROJECTS_DIR = FRONTEND_DIR / "Projects"
 
 app = Flask(__name__, static_folder=str(FRONTEND_DIR), static_url_path="/static")
 
+ALLOWED_LANGS = {'en', 'jp', 'ja'}
+
 
 def _send_html_from_candidates(filename):
 	candidates = [HTML_DIR / filename, PROJECTS_DIR / filename]
@@ -59,6 +61,87 @@ def project_slug(slug):
 			p = base / fn
 			if p.exists():
 				return send_from_directory(str(base), fn)
+	abort(404)
+
+
+# Language-prefixed routes: /en/..., /jp/...
+def _is_lang_ok(lang):
+	return lang in ALLOWED_LANGS
+
+
+@app.route('/<lang>/')
+def index_lang(lang):
+	if not _is_lang_ok(lang):
+		abort(404)
+	return index()
+
+
+@app.route('/<lang>/about')
+def about_lang(lang):
+	if not _is_lang_ok(lang):
+		abort(404)
+	return about()
+
+
+@app.route('/<lang>/projects')
+def projects_lang(lang):
+	if not _is_lang_ok(lang):
+		abort(404)
+	return projects()
+
+
+@app.route('/<lang>/cv')
+def cv_lang(lang):
+	if not _is_lang_ok(lang):
+		abort(404)
+	return cv()
+
+
+@app.route('/<lang>/projects/<slug>')
+def project_slug_lang(lang, slug):
+	if not _is_lang_ok(lang):
+		abort(404)
+	return project_slug(slug)
+
+
+@app.route('/<lang>/<path:path>')
+def catch_all_lang(lang, path):
+	if not _is_lang_ok(lang):
+		abort(404)
+	# Delegate to the existing catch-all logic but strip the language prefix
+	return catch_all(path)
+
+
+# Serve static asset folders explicitly so relative links work under language prefixes
+@app.route('/CSS/<path:filename>')
+def css_static(filename):
+	p = FRONTEND_DIR / 'CSS' / filename
+	if p.exists():
+		return send_from_directory(str(FRONTEND_DIR / 'CSS'), filename)
+	abort(404)
+
+
+@app.route('/JS/<path:filename>')
+def js_static(filename):
+	p = FRONTEND_DIR / 'JS' / filename
+	if p.exists():
+		return send_from_directory(str(FRONTEND_DIR / 'JS'), filename)
+	abort(404)
+
+
+@app.route('/img/<path:filename>')
+def img_static(filename):
+	p = FRONTEND_DIR / 'img' / filename
+	if p.exists():
+		return send_from_directory(str(FRONTEND_DIR / 'img'), filename)
+	abort(404)
+
+
+@app.route('/Locales/<path:filename>')
+def locales_static(filename):
+	p = FRONTEND_DIR / 'Locales' / filename
+	if p.exists():
+		return send_from_directory(str(FRONTEND_DIR / 'Locales'), filename)
 	abort(404)
 
 

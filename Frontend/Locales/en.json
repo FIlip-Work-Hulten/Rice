@@ -1,0 +1,23 @@
+{
+  "nav.home": "Home",
+  "nav.about": "About",
+  "nav.projects": "Projects",
+  "nav.cv": "CV",
+  "title": "Rice Portfolio",
+  "news.heading": "News",
+  "about.heading": "About",
+  "about.p1": "My name is Filip Hultén and this is my personal website. The purpose of the site is to publish projects that I have been working on to the public.",
+  "about.p2": "The goal is that these projects will be of use to other people, and that they will be able to learn from them.",
+  "about.contact": "Email: Filip.hulten@ratcave.se",
+  "cv.education": "Education",
+  "cv.skills": "Skills",
+  "cv.experience": "Experience",
+  "cv.projects": "Projects",
+  "cv.github": "GitHub",
+  "github.professional": "Professional GitHub",
+  "github.personal": "Personal GitHub",
+  "projects.calc": "Calculator",
+  "projects.minesweeper": "Minesweeper",
+  "projects.copilot": "Copilot Studio",
+  "projects.rct": "RCT"
+}

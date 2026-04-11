@@ -9,26 +9,13 @@
         <title>Rice</title>
     </head>
     <body>
-        <div class="navbar">
-            <section>
-                <button class="navbar-button" onclick="window.location.href='index.html'">
-                    Home
-                </button>
-                <button class="navbar-button" onclick="window.location.href='about.html'">
-                    About
-                </button>
-                <button class="navbar-button" onclick="window.location.href='projects.html'">
-                    Projects
-                </button>
-                <button class="navbar-button" onclick="window.location.href='CV.html'">
-                    CV
-                </button>
-                <script src="routing.js"></script>
-            </section>
-        </div>
+        <div id="navbar-root"></div>
+        <script src="../JS/routing.js"></script>
+        <script src="../JS/i18n.js"></script>
+        <script src="../JS/navbar.js"></script>
 
         <div class="wrapper">
-            <h1>News</h1>
+            <h1 data-i18n="news.heading">News</h1>
             <p>
                 This is just a teaching setup for frontend in HTML, CSS and JavaScript.
             </p>

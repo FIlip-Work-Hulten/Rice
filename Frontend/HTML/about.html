@@ -9,35 +9,19 @@
     </head>
 
     <body>
-       <div class="navbar">
-            <section>
-                <button class="navbar-button" onclick="window.location.href='index.html'">
-                    Home
-                </button>
-                <button class="navbar-button" onclick="window.location.href='about.html'">
-                    About
-                </button>
-                <button class="navbar-button" onclick="window.location.href='projects.html'">
-                    Projects
-                </button>
-                <button class="navbar-button" onclick="window.location.href='CV.html'">
-                    CV
-                </button>
-                <script src="routing.js"></script>
-            </section>
-        </div>
+       <div id="navbar-root"></div>
+       <script src="../JS/routing.js"></script>
+       <script src="../JS/i18n.js"></script>
+       <script src="../JS/navbar.js"></script>
         <div class="wrapper">
-            <h1>About</h1>
-            <p class="p">
+            <h1 data-i18n="about.heading">About</h1>
+            <p class="p" data-i18n="about.p1">
                My name is Filip Hultén and this is my personal website. The purpose of the site is to publish projects that I have been working on to the public.  
             </p>
-            <p class="p">
-                The goal is that these projectes will be of use to other people, and that they will be able to learn from them. I also hope that they will be able to inspire others to create their own projects and to share them with the world.
+            <p class="p" data-i18n="about.p2">
+                The goal is that these projects will be of use to other people, and that they will be able to learn from them. I also hope that they will be able to inspire others to create their own projects and to share them with the world.
             </p>
-            <p class="p">
-                If anyone have any intresst of any of the works feel free to contact:
-            </p>
-            <p>
+            <p class="p" data-i18n="about.contact">
                 Email: <a href="mailto:Filip.hulten@ratcave.se">Filip.hulten@ratcave.se</a>
             </p>
                 

@@ -6,35 +6,22 @@
         <title>Projects</title>
         <link rel="stylesheet" href="../CSS/style.css">
         <link rel="icon" type="image/png" href="../img/Icon.png">
-        <div class="navbar">
-            <section>
-                <button class="navbar-button" onclick="window.location.href='index.html'">
-                    Home
-                </button>
-                <button class="navbar-button" onclick="window.location.href='about.html'">
-                    About
-                </button>
-                <button class="navbar-button" onclick="window.location.href='projects.html'">
-                    Projects
-                </button>
-                <button class="navbar-button" onclick="window.location.href='CV.html'">
-                    CV
-                </button>
-                <script src="routing.js"></script>
-            </section>
-        </div>
+        <div id="navbar-root"></div>
+        <script src="../JS/routing.js"></script>
+        <script src="../JS/i18n.js"></script>
+        <script src="../JS/navbar.js"></script>
         <div class="wrapper">
             <section>
-                <button class="button projects" onclick="window.location.href='../Projects/Calculator.html'">
+                <button class="button projects" data-i18n="projects.calc" onclick="navigateToProject('calculator')">
                     Calculator
                 </button>
-                <button class="button projects" onclick="window.location.href='../Projects/Minesweeper.html'">
+                <button class="button projects" data-i18n="projects.minesweeper" onclick="navigateToProject('minesweeper')">
                     Minesweeper
                 </button>
-                <button class="button projects" onclick="window.location.href='../Projects/Copilot-studio.html'">
+                <button class="button projects" data-i18n="projects.copilot" onclick="navigateToProject('copilot-studio')">
                     Copilot Studio FastAPI PostgreSQL Docker
                 </button>
-                <button class="button projects" onclick="window.location.href='../Projects/RCT.html'">
+                <button class="button projects" data-i18n="projects.rct" onclick="navigateToProject('rct')">
                     RCT
                 </button>
             </section>
