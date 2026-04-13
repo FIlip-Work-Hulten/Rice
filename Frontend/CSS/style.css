@@ -10,20 +10,22 @@ html{
     margin: 0;
     padding: 0;
 }
-
-body{
-    align-items: center;
-    background: #000428; 
-    background: -webkit-linear-gradient(to right, #004e92, #000428);  
-    background: linear-gradient(to right, #004e92, #000428); 
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+body {
     display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Dosis', sans-serif;
     font-display: swap;
-    height: inherit;
-    justify-content: center;
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428);
 }
-
-
 .button {
    backdrop-filter: blur(5.5px);
    -webkit-backdrop-filter: blur(5.5px);
@@ -62,10 +64,10 @@ body{
     -webkit-backdrop-filter: blur(4px);
     background: rgba(255, 255, 255, 0.30);
     border: 1px solid rgba(255, 255, 255, 0.34);
-    flex-basis: 400px;
-    height: 540px;
-    padding: 20px 35px;
-    margin: 20px;
+    flex-basis: 40%;
+    height: 55%;
+    padding: 3.5% 5%;
+    margin: 5%;
 }
 
 .button-row {
@@ -147,9 +149,9 @@ body{
     -webkit-backdrop-filter: blur(4px);
     background: rgba(255, 255, 255, 0.30);
     border: 1px solid rgba(255, 255, 255, 0.34);
-    flex-basis: 1000px;
-    height: 640px;
-    padding: 20px 35px;
+    flex-basis: 100%;
+    height: 75%;
+    padding: 3.5% 5%;
     overflow-y: auto;
 }
 .screen.cv {
@@ -162,10 +164,10 @@ body{
     color: #232323;
     font-size: 18px;
     overflow: auto;
-    padding: 10px 20px;
+    padding: 3.5% 5%;
     text-align: left;
     width: 100%;
-    margin: 10px;
+    margin: 1%;
 }
 .screen.cv:hover {
         background-color: inherit;
@@ -204,9 +206,6 @@ body{
     border-radius: 50%;
     object-fit: cover;
 }
-/*
-This is just to style the links in the CV page, so that they don't look out of place with the rest of the design.
-*/
 a { 
     text-decoration: none;
     color: inherit;
@@ -356,3 +355,75 @@ a {
     object-fit: cover;
     margin-right: 8px;
 }
+.wrapper.tree {
+    backdrop-filter: blur(5.5px);
+    -webkit-backdrop-filter: blur(5.5px);
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(35, 35,35, 0.1);
+    color: #232323;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.30);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    flex-basis: 100%;
+    height: auto;
+    padding: 3.5% 5%;
+}
+.tree {
+    list-style: none;
+    padding-left: 20px;
+}
+.tree li {
+    line-height: 1.6;
+    margin: 6px 0;
+}
+.icon {
+    width: 22px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 8px;
+}
+.filename {
+    font-family: Consolas, monospace;
+    font-size: 13px;
+}
+.folder > .filename {
+    font-weight: 600;
+}
+ul.tree ul {
+    margin-left: 18px;
+    border-left: 1px dashed #eee;
+    padding-left: 12px;
+}
+.muted {
+    color: #666;
+    font-size: 13px;
+}
+.title.style {
+    color: #eee;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.page-copilot-studio{
+    padding:36px 18px;
+    color:#0f172a;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+.page-copilot-studio .wrapper{max-width:65%;margin:0 auto;background:transparent;padding:0}
+.page-copilot-studio .wrapper.tree{background:transparent}
+.page-copilot-studio .wrapper.tree > h1{font-size:1.6rem;margin:0 0 6px}
+.page-copilot-studio .muted{color:#6b7280;margin-bottom:18px}
+.page-copilot-studio #file-tree{background:#ffffff;border-radius:12px;box-shadow:0 6px 18px rgba(12,20,40,0.06);padding:20px}
+.page-copilot-studio ul.tree{list-style:none;padding-left:0;margin:0}
+.page-copilot-studio ul.tree ul{margin-left:18px;padding-left:12px;border-left:1px dashed #e6e9ef}
+.page-copilot-studio li{display:flex;align-items:center;padding:8px 6px;border-radius:6px}
+.page-copilot-studio li:hover{background:#f8fafc}
+.page-copilot-studio .icon{width:36px;display:inline-flex;align-items:center;justify-content:center;color:#2563eb;margin-right:10px}
+.page-copilot-studio .icon i{font-size:18px}
+.page-copilot-studio .filename{font-size:0.98rem;color:#0f172a}
+.page-copilot-studio li.folder > .filename{font-weight:600;color:#0b63d6}
+@media (max-width:640px){.page-copilot-studio{padding:18px} .page-copilot-studio .wrapper{padding:0 6px} .page-copilot-studio #file-tree{padding:14px}}

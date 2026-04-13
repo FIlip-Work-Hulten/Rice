@@ -4,16 +4,75 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Copilot Studio</title>
-        <link rel="stylesheet" href="../CSS/style.css">
-        <link rel="icon" type="image/png" href="../img/Icon.png">
+        <link rel="stylesheet" href="/CSS/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-h20CPYF6Z8b1XK2a6e6kzYk6sKk1pYV6+1e8m6pQqv1nG8z9j8GQx2FJx2b3K9Q1V7w5Y6vZ0z1G6Y8kQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.14.0/devicon.min.css">
+        <link rel="icon" type="image/png" href="/img/Icon.png">
     </head>
-    <body class="body">
-                <div id="navbar-root"></div>
-                <script src="../JS/routing.js"></script>
-                <script src="../JS/i18n.js"></script>
-                <script src="../JS/navbar.js"></script>
+    <body class="page-copilot-studio">
+        <div id="navbar-root"></div>
+                <script src="/JS/routing.js"></script>
+                <script src="/JS/i18n.js"></script>
+                <script src="/JS/navbar.js"></script>
                 <script>
                     document.addEventListener('DOMContentLoaded', function(){ if(typeof i18nInit==='function') i18nInit(); });
                 </script>
-    </body>
+  <div class="wrapper">
+    <h1 class="title style">Project: Copilot Studio Rest API Setup with PostgreSQL</h1>
+    <p class="muted">A simple tree view you can include in a portfolio. Icons come from Devicons and Font Awesome.</p>
+
+    <div id="file-tree">
+      <ul class="tree">
+        <li><span class="icon"><i class="fa-solid fa-file-lines"></i></span><span class="filename">copilot_studio_openapi.yaml</span></li>
+        <li><span class="icon"><i class="devicon-docker-plain colored"></i></span><span class="filename">docker-compose.yml</span></li>
+        <li class="folder"><span class="icon"><i class="fa-solid fa-folder"></i></span><span class="filename">API/</span>
+          <ul>
+            <li><span class="icon"><i class="fa-solid fa-book"></i></span><span class="filename">README_API.md</span></li>
+            <li><span class="icon"><i class="devicon-python-plain colored"></i></span><span class="filename">Studio_api.py</span></li>
+          </ul>
+        </li>
+
+        <li class="folder"><span class="icon"><i class="fa-solid fa-folder"></i></span><span class="filename">DB/</span>
+          <ul>
+            <li><span class="icon"><i class="fa-solid fa-file-code"></i></span><span class="filename">__init__.py</span></li>
+            <li><span class="icon"><i class="devicon-python-plain colored"></i></span><span class="filename">DB_setup.py</span></li>
+            <li class="folder"><span class="icon"><i class="fa-solid fa-folder"></i></span><span class="filename">Cleaner/</span>
+              <ul>
+                <li><span class="icon"><i class="devicon-python-plain colored"></i></span><span class="filename">Data_cleaner.py</span></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li class="folder"><span class="icon"><i class="fa-solid fa-folder"></i></span><span class="filename">Main/</span>
+          <ul>
+            <li><span class="icon"><i class="devicon-python-plain colored"></i></span><span class="filename">Run.py</span></li>
+          </ul>
+        </li>
+
+        <li class="folder"><span class="icon"><i class="fa-solid fa-folder"></i></span><span class="filename">scripts/</span>
+          <ul>
+            <li><span class="icon"><i class="fa-solid fa-terminal"></i></span><span class="filename">wait_db.py</span></li>
+          </ul>
+        </li>
+
+        <li class="folder"><span class="icon"><i class="fa-solid fa-folder"></i></span><span class="filename">Test/</span>
+          <ul>
+            <li><span class="icon"><i class="fa-solid fa-play"></i></span><span class="filename">run_scan.py</span></li>
+          </ul>
+        </li>
+
+        <li class="folder"><span class="icon"><i class="fa-solid fa-folder"></i></span><span class="filename">Tools/</span>
+          <ul>
+            <li><span class="icon"><i class="fa-solid fa-file-code"></i></span><span class="filename">__init__.py</span></li>
+            <li><span class="icon"><i class="fa-solid fa-map"></i></span><span class="filename">Map.py</span></li>
+            <li><span class="icon"><i class="fa-solid fa-file-pdf"></i></span><span class="filename">pdf_scanner.py</span></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <p class="muted">Tip: open this file in a browser to preview. You can copy the structure or embed the HTML snippet in your portfolio site.</p>
+  </div>
+</body>
 </html>
