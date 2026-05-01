@@ -15,5 +15,90 @@
                 <script>
                     document.addEventListener('DOMContentLoaded', function(){ if(typeof i18nInit==='function') i18nInit(); });
                 </script>
+                                <div class="wrapper mcp-wrapper">
+                                    <div class="mcp-fluid">
+                                        <main class="content" id="mcp-setup">
+                                        <h1>MCP Servers in Docker &amp; HTTPS for Copilot Studio</h1>
+                                        <p>This section outlines a concise, practical flow to host MCP servers in Docker on an Ubuntu host and expose them securely to Copilot Studio over HTTPS. It ends with adding the example repo <a href="https://github.com/sveins/si---mcp---studio" target="_blank" rel="noopener">si---mcp---studio</a>.</p>
+
+                                        <h2>Prerequisites</h2>
+                                        <ul>
+                                                <li>Domain name pointing to your Ubuntu server (create an A record).</li>
+                                                <li>Ubuntu 20.04+ with Docker and Docker Compose installed.</li>
+                                                <li>Ports 80 and 443 open (for ACME http-01 or TLS via reverse proxy).</li>
+                                        </ul>
+
+                                        <h2>High-level Steps</h2>
+                                        <ol>
+                                                <li>Clone or build your MCP server image (example repo below).</li>
+                                                <li>Create a Docker Compose stack that runs the MCP service and a reverse proxy (Caddy or Nginx) for TLS.</li>
+                                                <li>Point your domain to the server and start the stack with <code>docker compose up -d</code>.</li>
+                                                <li>Verify HTTPS and configure Copilot Studio to use the secure endpoint.</li>
+                                        </ol>
+
+                                        <h2>Example: docker-compose.yml (MCP + Caddy)</h2>
+                                        <pre><code>version: '3.8'
+services:
+    mcp:
+        image: sveins/si---mcp---studio:latest
+        restart: unless-stopped
+        environment:
+            - PORT=8080
+        expose:
+            - "8080"
+        networks:
+            - web
+
+    caddy:
+        image: caddy:2
+        restart: unless-stopped
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./Caddyfile:/etc/caddy/Caddyfile
+            - caddy_data:/data
+            - caddy_config:/config
+        networks:
+            - web
+
+networks:
+    web:
+        external: false
+
+volumes:
+    caddy_data: {}
+    caddy_config: {}
+</code></pre>
+
+                                        <h2>Example: Caddyfile</h2>
+                                        <pre><code>your.domain.example {
+    reverse_proxy mcp:8080
+    tls you@your-email.example
+}
+</code></pre>
+
+                                        <h2>Commands</h2>
+                                        <pre><code># Clone the example repo
+git clone https://github.com/sveins/si---mcp---studio.git
+cd si---mcp---studio
+
+# Copy or create docker-compose.yml and Caddyfile on your Ubuntu host
+docker compose up -d
+</code></pre>
+
+                                        <h2>Notes & Tips</h2>
+                                        <ul>
+                                                <li><strong>Use Caddy for simple automatic TLS</strong>: Caddy obtains certificates automatically via Let's Encrypt and requires minimal configuration.</li>
+                                                <li><strong>Alternative: Nginx + Certbot</strong> — If you prefer Nginx, terminate TLS with Certbot-managed certificates and reverse proxy to the MCP container.</li>
+                                                <li><strong>Health checks:</strong> add a simple HTTP health endpoint in the MCP container for uptime checks.</li>
+                                                <li><strong>Firewall:</strong> allow 80 and 443 through UFW: <code>sudo ufw allow 80,443/tcp</code>.</li>
+                                                <li><strong>Onboarding to Copilot Studio:</strong> In Copilot Studio, point the MCP integration to <em>https://your.domain.example</em> and ensure API keys/credentials are configured as required by your MCP images.</li>
+                                        </ul>
+
+                                        <p>If you want, I can also add the example `docker-compose.yml` and `Caddyfile` into this project, or tailor the instructions to a specific domain or MCP image you use.</p>
+                                        </main>
+                                    </div>
+                                </div>
     </body>
 </html>

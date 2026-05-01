@@ -9,6 +9,14 @@ PROJECTS_DIR = FRONTEND_DIR / "Projects"
 
 app = Flask(__name__, static_folder=str(FRONTEND_DIR), static_url_path="/static")
 
+# Register minesweeper API blueprint if available
+try:
+	from proj.minesweeper.minesweeper import minesweeper_bp
+	app.register_blueprint(minesweeper_bp, url_prefix='/api/minesweeper')
+except Exception:
+	# If import fails (during development or tests), continue without API
+	pass
+
 ALLOWED_LANGS = {'en', 'jp', 'ja'}
 
 
