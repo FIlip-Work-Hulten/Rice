@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Projects</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+        <link rel="icon" type="image/png" href="/static/img/Icon.png">
+        <script src="/static/js/routing.js"></script>
+        <script src="/static/js/i18n.js"></script>
+        <script src="/static/js/navbar.js"></script>
+        <div class="wrapper">
+            <div id="navbar-root"></div>
+            <section>
+                <button class="button projects" data-i18n="projects.calc" onclick="navigateToProject('calculator')">
+                    Calculator
+                </button>
+                <button class="button projects" data-i18n="projects.minesweeper" onclick="navigateToProject('minesweeper')">
+                    Minesweeper
+                </button>
+                <button class="button projects" data-i18n="projects.copilot" onclick="navigateToProject('copilot-studio')">
+                    Copilot Studio FastAPI PostgreSQL Docker
+                </button>
+                <button class="button projects" data-i18n="projects.rct" onclick="navigateToProject('rct')">
+                    RCT
+                </button>
+            </section>
+        </div>
+    </body>
+</html>

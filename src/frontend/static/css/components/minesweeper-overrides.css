@@ -1,0 +1,11 @@
+/* Minesweeper responsive overrides */
+.ms-root{max-width:var(--ms-max-size);margin:0 auto}
+.ms-board{display:grid;grid-auto-rows:1fr;gap:var(--ms-gap)}
+
+@media (max-width:900px){
+  .ms-root{padding:8px}
+  .ms-board{transform:scale(0.95)}
+}
+@media (max-width:480px){
+  .ms-board{transform:none;grid-auto-rows:auto}
+}

@@ -1,0 +1,7 @@
+/* Button styles and variants */
+.button{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:10px;border:1px solid rgba(2,6,23,0.06);background:#fff;color:var(--text);cursor:pointer;font-weight:600}
+.button.primary{background:var(--accent);color:#fff;border:none}
+.button.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
+.button:focus{outline:3px solid rgba(11,102,255,0.16);outline-offset:2px}
+
+.button-row{display:flex;gap:12px}

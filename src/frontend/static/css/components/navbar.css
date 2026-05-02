@@ -1,0 +1,68 @@
+/* Navbar component styles */
+.navbar{
+  position:sticky;
+  top:12px;
+  left:0;
+  transform:none;
+  z-index:1200;
+  width:100%;
+  display:block;
+  padding:8px 12px;
+}
+.navbar .brand{display:flex;align-items:center;gap:8px;font-weight:700}
+.navbar img.logo{height:44px;width:44px;border-radius:8px;object-fit:cover}
+.navbar .links{display:flex !important;gap:18px;align-items:center}
+.navbar section{display:flex;align-items:center;gap:12px;flex-wrap:nowrap}
+
+.nav-inner{
+  max-width:var(--max-width);
+  margin:0 auto;
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-radius:18px;
+  padding:10px 18px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  justify-content:space-between;
+  box-shadow: 0 4px 20px rgba(2,6,23,0.12) inset;
+}
+
+.nav-left{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.nav-center{flex:1 1 auto;display:flex;justify-content:center}
+.nav-right{flex:0 0 auto;display:flex;align-items:center}
+
+.language-switcher{background:rgba(255,255,255,0.9);border-radius:12px;padding:6px 10px;border:1px solid rgba(0,0,0,0.06)}
+/* language flag used in navbar */
+.navbar img.language.icon{width:36px !important;height:36px !important;max-width:36px !important;max-height:36px !important;object-fit:cover;border-radius:50%;flex:0 0 auto;display:inline-block}
+.navbar select.language-switcher{height:36px}
+.nav-toggle{display:none;background:transparent;border:none;color:var(--panel-bg);font-size:1.1rem}
+
+/* Defensive: ensure navbar images do not expand to fill flex container */
+.navbar img{max-width:unset;}
+
+/* Keep mobile styles, but do not hide links by default so the navbar works without JS */
+@media (max-width:780px){
+  .navbar{width:calc(100% - 20px)}
+  .navbar .links{display:flex;flex-direction:column;position:static;background:transparent;padding:8px;border-radius:8px;gap:8px}
+  .navbar .links a{padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.03)}
+  .nav-toggle{display:inline-flex}
+  .navbar img.language.icon{width:36px;height:36px}
+}
+
+/* Dropdown hook kept for JS-enhanced behaviour */
+.navbar .links.open{display:flex}
+
+/* The theme's navbar button look */
+.navbar-button{
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(2,6,23,0.08);
+  color: #232323;
+  font-size: 14px;
+  padding: 6px 10px;
+}
+.navbar-button:hover{background-color:inherit}
+.navbar-button:active{background-color:#ffef78}
