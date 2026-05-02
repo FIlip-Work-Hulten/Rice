@@ -8,7 +8,7 @@
     --bg-2: #0f1840;
     --panel-bg: #ffffff;
     --panel-weak: rgba(255,255,255,0.28);
-    --text: #0b1220; /* high-contrast body text */
+    --text: #ffffff; /* all site text: white */
     --muted: #4b5563;
     --accent: #0b66ff; /* accessible accent */
     --radius: 12px;
@@ -16,6 +16,20 @@
     --max-width: 1200px;
     --font-base: 16px;
     --line-height: 1.45;
+
+    /* sakura pink glow (RGB separated so it can be used in rgba()) */
+    --sakura-rgb: 255,182,193;
+    --sakura-glow: rgba(var(--sakura-rgb), 0.14);
+}
+
+/* Ensure the first page wrapper sits below the fixed navbar with a ~20px gap */
+.wrapper:first-of-type {
+    margin-top: calc(var(--navbar-height, 48px) + 20px);
+}
+
+@media (max-width:780px) {
+    /* mobile: navbar inner height is larger (56px) — keep ~20px gap */
+    .wrapper:first-of-type { margin-top: calc(56px + 20px); }
 }
 
 /* responsive font sizing */
@@ -28,12 +42,14 @@ html{font-size:var(--font-base)}
 html,body{height:100%;margin:0}
 body{
     font-family: Inter, Dosis, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    background: linear-gradient(160deg,var(--bg-1) 0%, var(--bg-2) 100%);
+    background: var(--bg-1);
     color:var(--text);
     line-height:var(--line-height);
     min-height:100vh;
     padding-top:16px;
     display:flex;align-items:flex-start;justify-content:center;
+    /* subtle sakura pink glow on all text */
+    text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 0 8px var(--sakura-glow);
 }
 
 /* Vertical floating frame lines at left/right of the centered content */
@@ -54,21 +70,46 @@ body::before, body::after{
     white-space:nowrap}
 
 /* Layout primitives */
+
 .wrapper {
-  background: var(--panel-bg);
+  /* keep your layout styles */
   border-radius: var(--radius);
   padding: 20px;
-  box-shadow: 0 8px 30px rgba(2,6,23,0.24);
   width: 100%;
   max-width: var(--max-width);
   margin: var(--gap) 40px;
   z-index: 1250;
+  margin-top: 100px;
+
+  /* GLASS effect */
+  background: rgba(255, 255, 255, 0.10); /* transparent glass */
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%); /* Safari */
+
+  /* glass edge + depth */
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.24);
+
+  /* optional: slightly reduce text washout on bright backgrounds */
+  color: rgba(255, 255, 255, 0.92);
 }
+
 .screen {
-    background:rgba(255,255,255,0.98);
     padding:16px;
     border-radius:12px;
-    overflow:auto
+    overflow:auto;
+     /* GLASS effect */
+    background: rgba(255, 255, 255, 0.10); /* transparent glass */
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%); /* Safari */
+
+    /* glass edge + depth */
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.24);
+
+    /* optional: slightly reduce text washout on bright backgrounds */
+    color: rgba(255, 255, 255, 0.92);
+    margin: 5px;
 }
 
 /* Repo card */
@@ -99,15 +140,15 @@ body::before, body::after{
 :root{ --ms-gap:0.4%; --ms-max-size:92vmin; }
 
 /* Import component styles (keep imports relative to this file's directory) */
-@import url("components/typography.css?v=2");
-@import url("components/buttons.css?v=2");
-@import url("components/navbar.css?v=2");
-@import url("components/projects.css?v=2");
-@import url("components/calculator.css?v=2");
-@import url("components/footer.css?v=2");
-@import url("components/utilities.css?v=2");
-@import url("minesweeper.css?v=2");
-@import url("components/minesweeper-overrides.css?v=2");
+@import url("components/typography.css?v=3");
+@import url("components/buttons.css?v=3");
+@import url("components/navbar.css?v=3");
+@import url("components/projects.css?v=3");
+@import url("components/calculator.css?v=3");
+@import url("components/footer.css?v=3");
+@import url("components/utilities.css?v=3");
+@import url("minesweeper.css?v=3");
+@import url("components/minesweeper-overrides.css?v=3");
 
 
 /* Ensure images inside wrappers scale and don't overflow their containers */

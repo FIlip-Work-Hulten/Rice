@@ -91,6 +91,20 @@
     icon.alt = l === 'en' ? 'English' : (l === 'jp' ? '日本語' : (l === 'sv' ? 'Svenska' : 'Language'));
   }
 
+  // Use a single background image for all sizes
+  function setResponsiveBackground(){
+    try{
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var url = '/static/img/background.png';
+      document.body.style.backgroundImage = 'url("' + url + '")';
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundColor = 'var(--water-base)';
+      if(prefersReduced){ document.body.style.animation = 'none'; }
+    }catch(e){ /* ignore */ }
+  }
+
   function initNavbar(){
     const placeholder = document.getElementById('navbar-root');
     if(placeholder){
@@ -129,14 +143,23 @@
         var link = document.createElement('link');
         link.rel = 'stylesheet'; link.href = cssHref; document.head.appendChild(link);
       }
+      // set responsive background image immediately (JS override of CSS fallback)
+      try{ setResponsiveBackground(); }catch(e){}
+      // load optional water wallpaper (WebGL) first
+      var waterSrc = '/static/js/water-wallpaper.js';
+      if(!document.getElementById('water-loader')){
+        var w = document.createElement('script'); w.src = waterSrc; w.id = 'water-loader';
+        w.onload = function(){ try{ if(window.WaterWallpaper && typeof window.WaterWallpaper.init === 'function'){ window.WaterWallpaper.init({ intensity: 0.6, glow: 0.45, waterline: 0.82 }); } }catch(e){} };
+        document.body.appendChild(w);
+      }
       var scriptSrc = '/static/js/background-rain.js';
       if(!document.getElementById('bg-loader')){
         var s = document.createElement('script'); s.src = scriptSrc; s.id = 'bg-loader';
-        s.onload = function(){
-          if(window.RainBackground && typeof window.RainBackground.init === 'function'){
-            try{ window.RainBackground.init({ intensity: 1.5, waterline: 0.82 }); }catch(e){}
-          }
-        };
+          s.onload = function(){
+            if(window.RainBackground && typeof window.RainBackground.init === 'function'){
+              try{ window.RainBackground.init({ intensity: 0.6, waterline: 0.98 }); }catch(e){}
+            }
+          };
         document.body.appendChild(s);
       }
     }catch(e){}

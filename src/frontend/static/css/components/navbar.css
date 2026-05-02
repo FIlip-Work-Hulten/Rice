@@ -1,57 +1,139 @@
 /* Navbar component styles */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:1200;width:100%;background:transparent;padding:8px 12px}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1400;width:100%;background:transparent;padding:8px 12px}
 
-.nav-wrapper{max-width:var(--max-width);margin:0 auto;padding:2px 6px}
+.nav-wrapper {
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:2px 6px;
+}
 
 :root{
   --navbar-height:48px;
   --navbar-font-size:14px;
   --navbar-icon-size:24px;
 }
-.navbar .brand{display:flex;align-items:center;gap:8px;font-weight:700}
-.navbar img.logo{height:44px;width:44px;border-radius:8px;object-fit:cover}
-.navbar .links{display:flex !important;gap:18px;align-items:center;flex-wrap:nowrap}
-.navbar section{display:flex;align-items:center;gap:12px;flex-wrap:nowrap}
+.navbar .brand{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+}
+.navbar img.logo{
+  height:44px;
+  width:44px;
+  border-radius:8px;
+  object-fit:cover;
+}
+.navbar .links{
+  display:flex !important;
+  gap:18px;
+  align-items:center;
+  flex-wrap:nowrap;
+}
+.navbar section{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:nowrap;
+}
 
 .nav-inner{
   position:relative;
-  background: rgba(255,255,255,0.98);
+  background: rgba(255, 255, 255, 0.10); /* transparent glass */
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%); /* Safari */
+
   border-radius:14px;
   padding:0 12px;
   height:var(--navbar-height);
-  display:flex;align-items:center;gap:12px;justify-content:space-between;
-  box-shadow:0 6px 20px rgba(2,6,23,0.06);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  justify-content:space-between;
+
+  /* glass edge + depth */
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  box-shadow: 0 8px 30px rgba(2, 6, 23, 0.24);
+
+  /* optional: slightly reduce text washout on bright backgrounds */
+  color: var(--text);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 0 10px rgba(var(--sakura-rgb), 0.18);
 }
 
-/* Ensure the page content sits below the fixed navbar (apply as an outside margin so
-  consecutive `.wrapper` elements still get a clear gap). */
-.wrapper {
-  margin: var(--gap) 40px;
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:0 0 auto;
+  overflow:hidden;
+}
+.nav-center{
+  flex:1 1 auto;
+  display:flex;
+  justify-content:center;
+}
+.nav-right{
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
 }
 
-
-.wrapper:first-of-type {
-  margin-top: calc(var(--navbar-height) + var(--gap));
+.language-switcher{
+  background:transparent;
+  border-radius:8px;
+  padding:4px 8px;
+  border:1px solid rgba(2,6,23,0.06);
+  height:32px;
+  font-size:var(--navbar-font-size);
+  color:var(--text);
 }
-
-#github-projects {
-  margin-top: calc(var(--navbar-height) + var(--gap));
-}
-
-.nav-left{display:flex;align-items:center;gap:12px;flex:0 0 auto;overflow:hidden}
-.nav-center{flex:1 1 auto;display:flex;justify-content:center}
-.nav-right{flex:0 0 auto;display:flex;align-items:center}
-
-.language-switcher{background:transparent;border-radius:8px;padding:4px 8px;border:1px solid rgba(2,6,23,0.06);height:32px;font-size:var(--navbar-font-size);color:var(--text)}
 /* language flag used in navbar */
-.navbar img.language.icon{width:var(--navbar-icon-size) !important;height:var(--navbar-icon-size) !important;max-width:var(--navbar-icon-size) !important;max-height:var(--navbar-icon-size) !important;object-fit:cover;border-radius:50%;flex:0 0 auto;display:inline-block;cursor:pointer;padding:2px;margin:0 8px;box-sizing:content-box}
-.navbar select.language-switcher{height:32px;font-size:var(--navbar-font-size)}
-.nav-toggle{display:none;background:transparent;border:none;color:var(--panel-bg);font-size:20px;cursor:pointer;padding:6px}
+.navbar img.language.icon{
+  width:var(--navbar-icon-size) !important;
+  height:var(--navbar-icon-size) !important;
+  max-width:var(--navbar-icon-size) !important;
+  max-height:var(--navbar-icon-size) !important;
+  object-fit:cover;
+  border-radius:50%;
+  flex:0 0 auto;
+  display:inline-block;
+  cursor:pointer;
+  padding:2px;
+  margin:0 8px;
+  box-sizing:content-box;
+}
+.navbar select.language-switcher{
+  height:32px;
+  font-size:var(--navbar-font-size);
+}
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:none;
+  color:var(--panel-bg);
+  font-size:20px;
+  cursor:pointer;
+  padding:6px;
+}
 
 /* Ensure navbar images respect sizing and don't overflow layout */
-.nav-inner img{max-width:100%;height:auto;display:inline-block}
-.nav-left img{width:var(--navbar-icon-size) !important;height:var(--navbar-icon-size) !important;max-width:var(--navbar-icon-size) !important;max-height:var(--navbar-icon-size) !important;object-fit:cover;display:inline-block}
-.navbar img{display:inline-block !important;vertical-align:middle}
+.nav-inner img{
+  max-width:100%;
+  height:auto;
+  display:inline-block;
+}
+.nav-left img{
+  width:var(--navbar-icon-size) !important;
+  height:var(--navbar-icon-size) !important;
+  max-width:var(--navbar-icon-size) !important;
+  max-height:var(--navbar-icon-size) !important;
+  object-fit:cover;
+  display:inline-block;
+}
+.navbar img{
+  display:inline-block !important;
+  vertical-align:middle;
+}
 
 /* Keep mobile styles, but do not hide links by default so the navbar works without JS */
 @media (max-width:780px){
@@ -59,9 +141,23 @@
   .nav-inner{height:56px;padding:8px}
   .nav-center{display:none}
   .nav-toggle{display:inline-flex}
-  .navbar .links{display:none;flex-direction:column;position:absolute;top:100%;left:8px;right:8px;background:rgba(255,255,255,0.98);padding:10px;border-radius:12px;gap:8px;box-shadow:0 6px 18px rgba(2,6,23,0.12);z-index:1300}
-  .navbar .links a, .navbar .links .navbar-button{padding:8px 10px;border-radius:8px;background:transparent}
-  .navbar img.language.icon{width:20px;height:20px;padding:4px}
+  .navbar .links{display:none;flex-direction:column;position:absolute;top:100%;left:8px;right:8px;padding:10px;border-radius:12px;gap:8px;z-index:1300;
+    background: rgba(255, 255, 255, 0.06); /* glass */
+    backdrop-filter: blur(10px) saturate(120%);
+    -webkit-backdrop-filter: blur(10px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 8px 24px rgba(2,6,23,0.12);
+  }
+  .navbar .links a, .navbar .links .navbar-button{
+    padding:8px 10px;
+    border-radius:8px;
+    background:transparent;
+  }
+  .navbar img.language.icon{
+    width:20px;
+    height:20px;
+    padding:4px;
+  }
 }
 
 /* Dropdown hook kept for JS-enhanced behaviour */
@@ -72,21 +168,26 @@
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  background: linear-gradient(90deg,#0b66ff,#ff3b3b);
-  border: none;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  border: 1px solid rgba(var(--sakura-rgb),0.18);
   color: #ffffff;
   border-radius: 999px;
   font-size: var(--navbar-font-size);
   padding: 8px 14px;
   height:36px;
   gap:8px;
-  box-shadow: 0 6px 18px rgba(11,102,255,0.10);
+  box-shadow: 0 6px 18px rgba(var(--sakura-rgb),0.10), 0 2px 8px rgba(2,6,23,0.06);
   transition: background .18s, transform .08s, color .12s, box-shadow .12s;
 }
 .navbar-button:hover{
-  background: #cfe9ff; /* light blue on hover */
+  background: rgba(255,255,255,0.12);
   color: #0b1220;
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(11,102,255,0.14);
+  box-shadow: 0 10px 30px rgba(var(--sakura-rgb),0.22);
 }
-.navbar-button:active{transform:translateY(0);background:#bfe0ff}
+.navbar-button:active{
+  transform:translateY(0);
+  background: rgba(255,255,255,0.08);
+}

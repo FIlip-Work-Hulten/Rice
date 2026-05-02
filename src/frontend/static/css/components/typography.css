@@ -1,13 +1,58 @@
 /* Typography scale and accessible rules */
 html{font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
 body{color:var(--text)}
-h1,h2,h3,h4{color:var(--text);margin:0 0 0.5rem 0;line-height:1.15}
+h1,h2,h3,h4,h5,h6{color:var(--text);margin:0 0 0.5rem 0;line-height:1.15}
 h1{font-size:2rem}
 h2{font-size:1.5rem}
 h3{font-size:1.15rem}
-p{color:var(--muted);margin:0 0 0.9rem 0}
+p{color:var(--text); text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 0 8px rgba(var(--sakura-rgb), 0.10); margin:0 0 0.9rem 0}
 
 @media (max-width:640px){
   h1{font-size:1.6rem}
   h2{font-size:1.25rem}
+}
+
+/* Sakura ping glow animation (subtle) */
+@keyframes sakura-ping {
+  0% {
+    text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 0 6px rgba(var(--sakura-rgb), 0.06);
+  }
+  50% {
+    text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 0 14px rgba(var(--sakura-rgb), 0.18);
+  }
+  100% {
+    text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 0 6px rgba(var(--sakura-rgb), 0.06);
+  }
+}
+
+/* Utility classes */
+.sakura-ping {
+  animation: sakura-ping 4.5s ease-in-out infinite;
+}
+.sakura-ping-once {
+  animation: sakura-ping 2.4s ease-in-out 1;
+}
+
+/* Apply a gentle ping to all headings, paragraphs and navbar brand by default
+   (disabled when user requests reduced motion). */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  /* baseline glow so it's visible even if animation hasn't started or is subtle */
+  text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 0 8px rgba(var(--sakura-rgb), 0.10);
+  will-change: text-shadow;
+  animation: sakura-ping 6s ease-in-out infinite;
+}
+
+/* Paragraphs get a slower, very subtle ping so long bodies don't distract */
+p {
+  /* paragraphs keep a very subtle baseline glow and animate slowly */
+  text-shadow: 0 1px 0 rgba(255,255,255,0.02), 0 0 6px rgba(var(--sakura-rgb), 0.08);
+  will-change: text-shadow;
+  animation: sakura-ping 12s ease-in-out infinite;
+}
+
+.navbar .brand { animation: sakura-ping 6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce){
+  h1, h2, h3, h4, h5, h6, p, .navbar .brand { animation: none !important; }
 }

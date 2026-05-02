@@ -13,7 +13,7 @@
     var config = {
       intensity: 1.5, // multiplier (higher = heavier rain)
       wind: 0, // px/sec
-      waterline: 0.82, // fraction of viewport height (0..1)
+      waterline: 0.98, // fraction of viewport height (0..1) — near bottom
       maxDropsPer1000: 400,
       maxCap: 1400
     };
@@ -64,7 +64,7 @@
       var d = raindropPool.pop() || {};
       d.x = Math.random() * width;
       d.y = -10 - Math.random() * 180;
-      d.vy = 600 + Math.random() * 600; // px/s
+      d.vy = 300 + Math.random() * 300; // px/s (slower)
       d.length = 8 + Math.random() * 30;
       d.width = 0.8 + Math.random() * 1.6;
       d.z = Math.random();
@@ -76,7 +76,7 @@
       for(var i=0;i<count;i++){
         var p = splashPool.pop() || {};
         var ang = -Math.PI/2 + (Math.random()-0.5) * Math.PI * 0.9;
-        var speed = 120 + Math.random() * 360;
+        var speed = 80 + Math.random() * 200;
         p.x = x; p.y = y;
         p.vx = Math.cos(ang) * speed + (Math.random()-0.5) * 80;
         p.vy = Math.sin(ang) * speed * -0.5 - Math.random() * 80;
@@ -87,7 +87,7 @@
       var r = ripplePool.pop() || {};
       r.x = x; r.y = y;
       r.r = 2 + Math.random()*6;
-      r.growth = 40 + Math.random()*120;
+      r.growth = 30 + Math.random()*60;
       r.life = 0.9 + Math.random()*1.1;
       r.age = 0; ripples.push(r);
     }
@@ -102,7 +102,7 @@
 
       for(var i=raindrops.length-1;i>=0;i--){
         var d = raindrops[i];
-        d.vy += 1200 * dt * (0.8 + d.z*0.4);
+        d.vy += 800 * dt * (0.8 + d.z*0.4);
         d.x += (config.wind || 0) * dt * (0.6 + d.z*0.8);
         d.y += d.vy * dt;
         if(d.y >= waterY){
@@ -193,7 +193,7 @@
   // Auto-init if the script is loaded directly into a page.
   try{
     if(typeof window !== 'undefined' && window.RainBackground && typeof window.RainBackground.init === 'function'){
-      var _autoStart = function(){ try{ if(window.RainBackground && typeof window.RainBackground.init === 'function') window.RainBackground.init({ intensity: 1.5, waterline: 0.82 }); }catch(e){} };
+      var _autoStart = function(){ try{ if(window.RainBackground && typeof window.RainBackground.init === 'function') window.RainBackground.init({ intensity: 1.5, waterline: 0.98 }); }catch(e){} };
       if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', _autoStart, { once: true }); else _autoStart();
     }
   }catch(e){}
