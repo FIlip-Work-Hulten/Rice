@@ -25,10 +25,18 @@
 
 /* Ensure the page content sits below the fixed navbar (apply as an outside margin so
   consecutive `.wrapper` elements still get a clear gap). */
-.wrapper { /* no top padding here */ }
-.wrapper:first-of-type { margin-top: calc(var(--navbar-height) + 24px); }
-/* When two `.wrapper` elements appear consecutively, ensure a clear gap between them */
-.wrapper + .wrapper { margin-top: var(--gap); }
+.wrapper {
+  margin: var(--gap) 40px;
+}
+
+
+.wrapper:first-of-type {
+  margin-top: calc(var(--navbar-height) + var(--gap));
+}
+
+#github-projects {
+  margin-top: calc(var(--navbar-height) + var(--gap));
+}
 
 .nav-left{display:flex;align-items:center;gap:12px;flex:0 0 auto;overflow:hidden}
 .nav-center{flex:1 1 auto;display:flex;justify-content:center}

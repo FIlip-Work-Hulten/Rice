@@ -53,14 +53,39 @@ body::after{ right: calc((100% - var(--max-width)) / 2); }
 .container{width:100%;max-width:var(--max-width);padding:16px}
 
 /* Small helpers kept here — larger utilities live in components/utilities.css */
-.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+.visually-hidden {
+    position:absolute!important;
+    height:1px;
+    width:1px;
+    overflow:hidden;
+    clip:rect(1px,1px,1px,1px);
+    white-space:nowrap}
 
 /* Layout primitives */
-.wrapper{background:var(--panel-bg);border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(2,6,23,0.24);width:100%;max-width:var(--max-width);margin:var(--gap) 0}
-.screen{background:rgba(255,255,255,0.98);padding:16px;border-radius:12px;overflow:auto}
+.wrapper {
+  background: var(--panel-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.24);
+  width: 100%;
+  max-width: var(--max-width);
+  margin: var(--gap) 40px;
+}
+.screen {
+    background:rgba(255,255,255,0.98);
+    padding:16px;
+    border-radius:12px;
+    overflow:auto
+}
 
 /* Repo card */
-.repo-card{background:#fff;border-radius:14px;padding:16px;margin:10px 0;box-shadow:0 8px 20px rgba(2,6,23,0.06)}
+.repo-card {
+    background:#fff;
+    border-radius:14px;
+    padding:16px;
+    margin:10px 0;
+    box-shadow:0 8px 20px rgba(2,6,23,0.06)
+}
 
 /* Responsive layout */
 @media (min-width: 900px){
