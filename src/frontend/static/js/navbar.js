@@ -80,6 +80,17 @@
     }
   }
 
+  function updateIcon(lang){
+    var icon = document.querySelector('#navbar-root #lang-icon') || document.getElementById('lang-icon');
+    if(!icon) return;
+    var l = (lang === 'ja') ? 'jp' : (lang || (window.i18nGetLang?window.i18nGetLang():'en'));
+    if(l === 'en') icon.src = '/static/img/gb.png';
+    else if(l === 'jp') icon.src = '/static/img/jp.png';
+    else if(l === 'sv') icon.src = '/static/img/se.png';
+    else icon.src = '/static/img/gb.png';
+    icon.alt = l === 'en' ? 'English' : (l === 'jp' ? '日本語' : (l === 'sv' ? 'Svenska' : 'Language'));
+  }
+
   function initNavbar(){
     const placeholder = document.getElementById('navbar-root');
     if(placeholder){
@@ -110,9 +121,35 @@
     }
   }
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initNavbar);
-  } else {
+  function loadBackground(){
+    try{
+      if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var cssHref = '/static/css/background.css';
+      if(!document.querySelector('link[href="' + cssHref + '"]')){
+        var link = document.createElement('link');
+        link.rel = 'stylesheet'; link.href = cssHref; document.head.appendChild(link);
+      }
+      var scriptSrc = '/static/js/background-rain.js';
+      if(!document.getElementById('bg-loader')){
+        var s = document.createElement('script'); s.src = scriptSrc; s.id = 'bg-loader';
+        s.onload = function(){
+          if(window.RainBackground && typeof window.RainBackground.init === 'function'){
+            try{ window.RainBackground.init({ intensity: 1.5, waterline: 0.82 }); }catch(e){}
+          }
+        };
+        document.body.appendChild(s);
+      }
+    }catch(e){}
+  }
+
+  function initAll(){
     initNavbar();
+    loadBackground();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+    initAll();
   }
 })();

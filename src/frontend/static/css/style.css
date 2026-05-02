@@ -37,18 +37,10 @@ body{
 }
 
 /* Vertical floating frame lines at left/right of the centered content */
+/* Disabled to prevent overlapping the background canvas */
 body::before, body::after{
-    content: "";
-    position:fixed;
-    top: calc(var(--navbar-height) + 28px);
-    bottom: 28px;
-    width:1px;
-    background: rgba(255,255,255,0.08);
-    z-index:1100;
-    pointer-events:none;
+    display: none;
 }
-body::before{ left: calc((100% - var(--max-width)) / 2); }
-body::after{ right: calc((100% - var(--max-width)) / 2); }
 
 .container{width:100%;max-width:var(--max-width);padding:16px}
 
@@ -70,6 +62,7 @@ body::after{ right: calc((100% - var(--max-width)) / 2); }
   width: 100%;
   max-width: var(--max-width);
   margin: var(--gap) 40px;
+  z-index: 1250;
 }
 .screen {
     background:rgba(255,255,255,0.98);
