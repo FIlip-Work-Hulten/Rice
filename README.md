@@ -36,12 +36,6 @@ You can open the site locally from `src/frontend/html/index.html` or run the bac
 
 </details>
 
-## Features
-
-- Interactive header with `assets/ratcave.png` as the logo.
-- Badges for stars, issues and contributors (replace `your-username/your-repo` with your repo).
-- Preview image and collapsible demo/usage sections.
-
 ## Quick Start
 
 1. Install Python dependencies (backend):
@@ -64,10 +58,6 @@ python3 src/backend/app.py
 
 3. Open the frontend: `src/frontend/html/index.html` in your browser or visit `http://127.0.0.1:5001` when the backend is running.
 
-## Contributing
-
-
-If you enjoy this project, please consider contributing and starring the repo â€” it helps a lot!
 
 <p align="center">
 	<a href="https://github.com/FIlip-Work-Hulten/Rice/stargazers">
@@ -77,17 +67,4 @@ If you enjoy this project, please consider contributing and starring the repo â€
 
 ---
 
-### Underline for Contribute / Stars
-
-To visually emphasise contributions and stars, there's a short underbar below the button:
-
-<p align="center">
-	<span style="display:inline-block;width:220px;border-bottom:3px solid #b7bdf8;margin-top:8px"></span>
-</p>
-
-If you want a different color or width, edit the inline style above.
-
-## License
-
-This project is provided as-is. Replace this section with your chosen license.
 

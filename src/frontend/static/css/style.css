@@ -36,13 +36,27 @@ body{
     display:flex;align-items:flex-start;justify-content:center;
 }
 
+/* Vertical floating frame lines at left/right of the centered content */
+body::before, body::after{
+    content: "";
+    position:fixed;
+    top: calc(var(--navbar-height) + 28px);
+    bottom: 28px;
+    width:1px;
+    background: rgba(255,255,255,0.08);
+    z-index:1100;
+    pointer-events:none;
+}
+body::before{ left: calc((100% - var(--max-width)) / 2); }
+body::after{ right: calc((100% - var(--max-width)) / 2); }
+
 .container{width:100%;max-width:var(--max-width);padding:16px}
 
 /* Small helpers kept here — larger utilities live in components/utilities.css */
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
 
 /* Layout primitives */
-.wrapper{background:var(--panel-bg);border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(2,6,23,0.24);width:100%;margin:var(--gap) 0}
+.wrapper{background:var(--panel-bg);border-radius:var(--radius);padding:20px;box-shadow:0 8px 30px rgba(2,6,23,0.24);width:100%;max-width:var(--max-width);margin:var(--gap) 0}
 .screen{background:rgba(255,255,255,0.98);padding:16px;border-radius:12px;overflow:auto}
 
 /* Repo card */
@@ -58,25 +72,31 @@ body{
     .wrapper{padding:12px}
 }
 
+/* Hide the floating frame on smaller viewports to avoid awkward placement */
+@media (max-width: 900px){
+    body::before, body::after{ display:none }
+}
+
 /* Minesweeper root-level variables (used by ms-css component) */
 :root{ --ms-gap:0.4%; --ms-max-size:92vmin; }
 
 /* Import component styles (keep imports relative to this file's directory) */
-@import url("components/typography.css");
-@import url("components/buttons.css");
-@import url("components/navbar.css");
-@import url("components/projects.css");
-@import url("components/calculator.css");
-@import url("components/footer.css");
-@import url("components/utilities.css");
-@import url("minesweeper.css");
-@import url("components/minesweeper-overrides.css");
+@import url("components/typography.css?v=2");
+@import url("components/buttons.css?v=2");
+@import url("components/navbar.css?v=2");
+@import url("components/projects.css?v=2");
+@import url("components/calculator.css?v=2");
+@import url("components/footer.css?v=2");
+@import url("components/utilities.css?v=2");
+@import url("minesweeper.css?v=2");
+@import url("components/minesweeper-overrides.css?v=2");
 
 
 /* Ensure images inside wrappers scale and don't overflow their containers */
 .wrapper img,
 .wrapper > img {
     max-width: 100%;
+    max-height: 60vmin; /* avoid enormous full-bleed images */
     height: auto;
     display: block;
     object-fit: cover;

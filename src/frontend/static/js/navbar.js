@@ -1,18 +1,19 @@
 (function(){
   function makeNavbar(){
-    return `
+      return `
       <div class="navbar">
-        <div class="nav-inner">
-          <div class="nav-left">
-            <button class="nav-toggle" aria-label="Toggle menu">☰</button>
-            <img id="lang-icon" class="language icon" src="/static/img/gb.png" alt="language">
+        <div class="nav-wrapper">
+          <div class="nav-inner">
+            <div class="nav-left">
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+            <img id="lang-icon" class="language icon" src="/static/img/gb.png" alt="language" role="button" tabindex="0" style="width:24px;height:24px;object-fit:cover;border-radius:50%;padding:2px;">
           </div>
           <div class="nav-center">
-            <div class="links">
-              <button class="navbar-button" data-page="" data-i18n="nav.home">Home</button>
-              <button class="navbar-button" data-page="about" data-i18n="nav.about">About</button>
-              <button class="navbar-button" data-page="projects" data-i18n="nav.projects">Projects</button>
-              <button class="navbar-button" data-page="cv" data-i18n="nav.cv">CV</button>
+            <div id="nav-links" class="links">
+              <button class="navbar-button button" data-page="" data-i18n="nav.home">Home</button>
+              <button class="navbar-button button" data-page="about" data-i18n="nav.about">About</button>
+              <button class="navbar-button button" data-page="projects" data-i18n="nav.projects">Projects</button>
+              <button class="navbar-button button" data-page="cv" data-i18n="nav.cv">CV</button>
             </div>
           </div>
           <div class="nav-right">
@@ -46,6 +47,22 @@
       // sync current language
       if(window.i18nGetLang) sel.value = window.i18nGetLang();
       if(icon) updateIcon(sel.value);
+      // make the icon clickable to toggle language for quick switching
+      if(icon){
+        icon.style.cursor = 'pointer';
+        icon.addEventListener('click', function(){
+          const current = sel.value || (window.i18nGetLang?window.i18nGetLang():'en');
+          const next = (current === 'en' || current === 'en-US') ? 'jp' : 'en';
+          sel.value = next;
+          sel.dispatchEvent(new Event('change'));
+        });
+        icon.addEventListener('keydown', function(ev){
+          if(ev.key === 'Enter' || ev.key === ' '){
+            ev.preventDefault();
+            icon.click();
+          }
+        });
+      }
     }
     
     function updateIcon(lang){
@@ -65,11 +82,12 @@
       // accessibility: ensure menu visible if CSS fails — remove 'hidden' flags
       const links = placeholder.querySelector('.links');
       if(links) links.classList.remove('hidden');
-      // attach a small toggle for mobile when JS is available
+      // attach a small toggle for mobile when JS is available (with aria updates)
       const toggle = placeholder.querySelector('.nav-toggle');
       if(toggle && links){
         toggle.addEventListener('click', function(){
-          links.classList.toggle('open');
+          const isOpen = links.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
       }
       // ensure i18n and routing scripts are available; if not, try to load
