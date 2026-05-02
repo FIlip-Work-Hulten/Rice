@@ -139,9 +139,12 @@
 @media (max-width:780px){
   .navbar{padding:6px 8px}
   .nav-inner{height:56px;padding:8px}
-  .nav-center{display:none}
+  /* Keep the center container visible so absolutely-positioned
+     .links can be displayed by JS when toggled open. Hiding the
+     container prevents its children from becoming visible. */
+  .nav-center{display:flex}
   .nav-toggle{display:inline-flex}
-  .navbar .links{display:none;flex-direction:column;position:absolute;top:100%;left:8px;right:8px;padding:10px;border-radius:12px;gap:8px;z-index:1300;
+  .navbar .links{display:none !important;flex-direction:column;position:absolute;top:100%;left:8px;right:8px;padding:10px;border-radius:12px;gap:8px;z-index:1300;
     background: rgba(255, 255, 255, 0.06); /* glass */
     backdrop-filter: blur(10px) saturate(120%);
     -webkit-backdrop-filter: blur(10px) saturate(120%);
@@ -161,7 +164,7 @@
 }
 
 /* Dropdown hook kept for JS-enhanced behaviour */
-.navbar .links.open{display:flex}
+.navbar .links.open{display:flex !important}
 
 /* The theme's navbar button look */
 .navbar-button{
