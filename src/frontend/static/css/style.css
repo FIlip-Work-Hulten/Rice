@@ -96,6 +96,20 @@ body{
     .profile{width:88px;height:88px}
 }
 
+/* Small logos used in CV and links */
+.logos{
+    width:40px;
+    height:40px;
+    object-fit:contain;
+    display:inline-block;
+    vertical-align:middle;
+    margin-right:8px;
+}
+
+@media (max-width:600px){
+    .logos{width:32px;height:32px}
+}
+
 /* Small utility: ensure images used as icons in flexible layouts don't stretch */
 .img-fit {
     max-width: 100%;

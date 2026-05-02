@@ -1,6 +1,6 @@
 <h3 align="center">
-	<img src="assets/ratcave.png" width="120" alt="Ratcave Logo"/><br/>
-	Rice — Personal site & projects
+	<img src="assets/ratcave.png" width="520" alt="Ratcave Logo"/><br/>
+	Ratcave - Protfolio
 </h3>
 
 <p align="center">
@@ -15,9 +15,6 @@
 	</a>
 </p>
 
-<p align="center">
-	<img src="assets/ratcave.png" alt="preview" width="520"/>
-</p>
 
 ## Table of Contents
 

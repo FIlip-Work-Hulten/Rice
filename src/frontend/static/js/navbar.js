@@ -57,7 +57,7 @@
     }
   }
 
-  document.addEventListener('DOMContentLoaded', function(){
+  function initNavbar(){
     const placeholder = document.getElementById('navbar-root');
     if(placeholder){
       placeholder.innerHTML = makeNavbar();
@@ -86,5 +86,11 @@
         }
       }
     }
-  });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initNavbar);
+  } else {
+    initNavbar();
+  }
 })();
