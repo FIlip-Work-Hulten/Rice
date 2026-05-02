@@ -1,0 +1,23 @@
+{
+  "nav.home": "Hem",
+  "nav.about": "Om",
+  "nav.projects": "Projekt",
+  "nav.cv": "CV",
+  "title": "Ratcave Portfölj",
+  "news.heading": "Nyheter",
+  "about.heading": "Om",
+  "about.p1": "Jag heter Filip Hultén och detta är min personliga webbplats. Syftet med sidan är att publicera projekt jag har arbetat med till allmänheten.",
+  "about.p2": "Målet är att dessa projekt ska vara till nytta för andra och att de kan lära sig av dem.",
+  "about.contact": "E-post: Filip.hulten@ratcave.se",
+  "cv.education": "Utbildning",
+  "cv.skills": "Färdigheter",
+  "cv.experience": "Erfarenhet",
+  "cv.projects": "Projekt",
+  "cv.github": "GitHub",
+  "github.professional": "Professionell GitHub",
+  "github.personal": "Personlig GitHub",
+  "projects.calc": "Kalkylator",
+  "projects.minesweeper": "Minesweeper",
+  "projects.copilot": "Copilot Studio",
+  "projects.rct": "RCT"
+}

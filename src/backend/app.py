@@ -33,7 +33,7 @@ except Exception:
     # If import fails (during development or tests), continue without API
     pass
 
-ALLOWED_LANGS = {"en", "jp", "ja"}
+ALLOWED_LANGS = {"en", "jp", "ja", "sv"}
 
 
 def _send_html_from_candidates(filename):

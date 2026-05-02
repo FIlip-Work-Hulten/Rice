@@ -2,7 +2,7 @@
   // Simple frontend i18n loader
   function detectLangFromPath(){
     const p = window.location.pathname.split('/').filter(Boolean);
-    if(p[0] === 'en' || p[0] === 'jp' || p[0] === 'ja') return p[0] === 'ja' ? 'jp' : p[0];
+    if(p[0] === 'en' || p[0] === 'jp' || p[0] === 'ja' || p[0] === 'sv') return p[0] === 'ja' ? 'jp' : p[0];
     return null;
   }
 
@@ -56,7 +56,7 @@
   function getPageSlug(){
     // return canonical page slug: home -> '', about -> about, projects -> projects, cv -> cv
     const p = window.location.pathname.split('/').filter(Boolean);
-    if(p[0] === 'en' || p[0] === 'jp' || p[0] === 'ja') p.shift();
+    if(p[0] === 'en' || p[0] === 'jp' || p[0] === 'ja' || p[0] === 'sv') p.shift();
     const slug = p[0] || '';
     return slug;
   }

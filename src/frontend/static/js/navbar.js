@@ -20,6 +20,7 @@
             <select id="lang-switch" aria-label="Language switch" class="language-switcher">
               <option value="en">EN</option>
               <option value="jp">JP</option>
+              <option value="sv">SV</option>
             </select>
           </div>
         </div>
@@ -52,7 +53,10 @@
         icon.style.cursor = 'pointer';
         icon.addEventListener('click', function(){
           const current = sel.value || (window.i18nGetLang?window.i18nGetLang():'en');
-          const next = (current === 'en' || current === 'en-US') ? 'jp' : 'en';
+          const langs = ['en','jp','sv'];
+          let idx = langs.indexOf(current);
+          if(idx === -1) idx = 0;
+          const next = langs[(idx + 1) % langs.length];
           sel.value = next;
           sel.dispatchEvent(new Event('change'));
         });
@@ -69,8 +73,10 @@
       if(!icon) return;
       const l = (lang === 'ja') ? 'jp' : (lang || (window.i18nGetLang?window.i18nGetLang():'en'));
       if(l === 'en') icon.src = '/static/img/gb.png';
-      else icon.src = '/static/img/jp.png';
-      icon.alt = l === 'en' ? 'English' : '日本語';
+      else if(l === 'jp') icon.src = '/static/img/jp.png';
+      else if(l === 'sv') icon.src = '/static/img/se.png';
+      else icon.src = '/static/img/gb.png';
+      icon.alt = l === 'en' ? 'English' : (l === 'jp' ? '日本語' : (l === 'sv' ? 'Svenska' : 'Language'));
     }
   }
 
@@ -97,9 +103,7 @@
         if(window.i18nGetLang){
           const iconEl = placeholder.querySelector('#lang-icon');
           if(iconEl){
-            const lang = window.i18nGetLang();
-            iconEl.src = (lang === 'en') ? '/static/img/gb.png' : '/static/img/jp.png';
-            iconEl.alt = (lang === 'en') ? 'English' : '日本語';
+            updateIcon(window.i18nGetLang());
           }
         }
       }
